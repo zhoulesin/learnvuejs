@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+
+
+		<p>{{ message }}</p>
+
+		<!-- 整个标签会直接替换为message中的html字符串,包括p,和里面的内容都无效了 -->
+		<p v-html="message">123</p>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				message:'<h1>你好啊</h1>'
+			},
+			methods:{}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		<p>{{ message }}</p>
+
+		<!-- 实现message双向绑定,用户通过input修改message也会修改vue中的data值 -->
+		<input type="text" v-model='message'>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				message:'hello'
+			},
+			methods:{}
+		})
+	</script>
+</body>
+</html>

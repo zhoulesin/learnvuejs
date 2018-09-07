@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.active {
+			border:3px solid blue;
+		}
+
+		.pink{
+			background-color: pink;
+		}
+
+		.txt {
+			color: white;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app">
+		<!-- 给标签绑定属性 -->
+		<div v-bind:title='message'>{{ message }}</div>
+
+		<!-- 简写 -->
+		<p :name='pname'>{{ message }}</p>
+
+		<!-- class写法不同,接收对象,或数组 -->
+		<!-- <p :class="['active','pink']">{{ message }}</p> -->
+		<!-- <p :class="['active','pink', {txt : flag}]">{{ message }}</p> -->
+		<p :class="{'active':flag,txt:!flag}">{{ message }}</p>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				message:'这是div的title',
+				pname:'haha',
+				flag:true
+			},
+			methods:{}
+		})
+	</script>
+</body>
+</html>

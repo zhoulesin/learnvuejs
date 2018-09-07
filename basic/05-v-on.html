@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		<button v-on:click='btnClick'>按钮</button>
+
+		<!-- .prevent组织默认点击事件 -->
+		<a href="http://www.baidu.com" v-on:click.prevent='aClick'>百度</a>
+
+		<!-- 简写 -->
+		<button @click='btnClick2'> 按钮2</button>
+
+		<!-- .enter 指定enter按键(有具体的数值) -->
+		<input type="text" @keyup.enter='inputKeyup'>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{},
+			methods:{
+				btnClick (){
+					console.log('btn clicked')
+				},
+				aClick (){
+					console.log('a clicked')
+				},
+				btnClick2 (){
+					console.log('btn2 clicked')
+				},
+				inputKeyup (){
+					console.log('input enter keyup')
+				}
+			}
+		})
+	</script>
+</body>
+</html>

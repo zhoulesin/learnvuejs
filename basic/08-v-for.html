@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		<!-- v-for中一般建议有key,key的值为可以保证item唯一的值 -->
+		<!-- v-for使用 -->
+		<!-- 1.     v-for='item in items'
+		2.     v-for='(item,idx) in items'
+		3.     v-for='(val,key) in object'
+		4.     v-for='(val,key,idx) in object' -->
+		<ul>
+			<li v-for='(item,idx) in items' key='item.id'>
+				<p>{{ item.name }}</p>
+				<p>{{ idx }}</p>
+			</li>
+		</ul>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				items :[
+					{id:1,name:'zs'},
+					{id:12,name:'zs2'},
+					{id:13,name:'zs3'},
+					{id:14,name:'zs4'}
+				]
+			},
+			methods:{}
+		})
+	</script>
+</body>
+</html>

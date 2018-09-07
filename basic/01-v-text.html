@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+
+		<!-- 直接使用{{}}会在界面上先出现{{message}},再更新为具体的值 -->
+		<p>{{ message }}</p>
+
+		<!-- 等价于上面,但不会出现上面的bug  -->
+		<p v-text="message"></p>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				message:'hello'
+			},
+			methods:{}
+		})
+	</script>
+</body>
+</html>

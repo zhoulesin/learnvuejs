@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+
+		<!-- v-if标签会渲染或者不渲染 -->
+		<p v-if="flag"> {{ message }}</p>
+
+
+		<!-- v-show标签一定会渲染,只是控制显示隐藏 -->
+		<p v-show='flag'> {{ message }}</p>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				flag:true,
+				message:'hello'
+			},
+			methods:{}
+		})
+	</script>
+</body>
+</html>
