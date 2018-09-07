@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div id='app'>
+	<comp ref='compa'></comp>
+	<div ref='diva'>{{msg}}</div>
+	<button @click='getDom'>点击</button>
+</div>
+
+	
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+
+	var comp = {
+		template:"<div ref='sd'>{{msg}}</div>",
+		data(){
+			return {
+				msg:'子组件msg'
+			}
+		},
+		methods:{
+			show(){
+				console.log('子组件show')
+			}
+		}
+	}
+
+	var app = new Vue({
+		el:'#app',
+		data:{
+			msg:'parent msg'
+		},
+		methods:{
+			getDom(){
+				console.log(this.$refs.diva.innerText)
+				console.log(this.$refs.compa)
+				this.$refs.compa.show()
+				console.log(this.$refs.compa.$refs.sd.innerText)
+			}
+		},
+		components:{
+			comp
+		}
+	})
+</script>
+</body>
+</html>

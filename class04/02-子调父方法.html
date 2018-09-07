@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		<comp @func='pclick'></comp>
+	</div>
+
+	<template id="temp">
+		<div>
+			<p>组件</p>
+			<button @click='btnClick'>点击</button>
+		</div>
+	</template>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		
+		var comp = {
+			template:'#temp',
+			methods:{
+				btnClick(){
+					this.$emit('func')
+				}
+			}
+		}
+
+		new Vue({
+			el:'#app',
+			data:{},
+			methods:{
+				pclick(){
+					console.log('parent log')
+				}
+			},
+			components:{
+				comp
+			}
+		})
+	</script>
+</body>
+</html>
