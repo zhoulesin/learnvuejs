@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		<!-- 自动获取焦点 -->
+		<label for="">
+			111
+			<input type="text">
+		</label>
+		<label for="">
+			222
+			<input type="text" v-focus>
+		</label>
+		<label for="">
+			333
+			<input type="text">
+		</label>
+
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+
+	Vue.directive('focus',{
+		inserted:function(el,binding){
+			el.focus()
+		}
+	})
+
+		new Vue({
+			el:'#app',
+			data:{},
+			methods:{},
+			directives:{}
+		})
+	</script>
+</body>
+</html>

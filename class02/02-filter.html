@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		<p>{{ msg | msgFilter }}</p>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		Vue.filter('msgFilter',function(data){
+			return data + '123'
+		})
+
+		new Vue({
+			el:'#app',
+			data:{
+				msg:'haha'
+			},
+			methods:{},
+			filters:{}
+		})
+	</script>
+</body>
+</html>

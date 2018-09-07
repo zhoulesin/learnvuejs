@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/zhoulesin/learnvuejs#readme",
   "dependencies": {
-    "vue": "^2.5.17"
+    "bootstrap": "^3.3.7",
+    "express": "^4.16.3",
+    "vue": "^2.5.17",
+    "vue-resource": "^1.5.1"
   }
 }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+	
+
+	<div id="app">
+		<div class="panel panel-primary">
+		<div class="panel-heading">
+			<div class="panel-title">操作</div>
+		</div>
+		<div class="panel-body form-inline">
+			<div class="form-group">
+			    <label for="">Id</label>
+			    <input type="text" class="form-control" placeholder="Id" v-model='id'>
+			  </div>
+			  <div class="form-group">
+			    <label for="">Name</label>
+			    <input type="text" class="form-control" placeholder="Name" v-model='name'>
+			  </div>
+			  <button class="btn btn-primary" @click='add'>添加</button>
+
+			   <div class="form-group">
+			    <label for="">Select</label>
+			    <input type="text" class="form-control" placeholder="Select" v-model='sel'>
+			  </div>
+		</div>
+	</div>
+
+		<table class="table table-hover table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Ctime</th>
+					<th>Opertaion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for='(item,idx) in data.filter(item=>{return item.name.includes(sel)})' :key='item.id'>
+					<td>{{item.id}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.ctime}}</td>
+					<td><a href="#" @click.prevent='del(idx)'>delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				id:'',
+				name:'',
+				sel:'',
+				data:[
+					{id:1,name:'zs',ctime:new Date()},
+					{id:12,name:'zs2',ctime:new Date()},
+					{id:13,name:'zs3',ctime:new Date()},
+				]
+			},
+			methods:{
+				del(idx){
+					this.data.splice(idx,1)
+				},
+				add(){
+					console.log('haha')
+					this.data.push({id:this.id,name:this.name,ctime:new Date()})
+					this.id = this.name = ''
+				}
+			}
+		})
+	</script>
+</body>
+</html>

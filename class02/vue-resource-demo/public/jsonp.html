@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">发送jsonp请求</button>
+
+
+	<script>
+
+		//通常情况下
+		//script src='xxx/vue.js'
+		//响应回来的是
+		//var a = 123;
+		//var b = function(){}
+		//...
+
+
+
+		//jsonp原理就是通过创建script标签,通过src属性发起请求,
+		//由于这里没办法获取请求结果,所以传一个callback参数过去,
+		//callback所对应的值是一个方法名fn1
+		//jsonp响应回来的数据格式是
+		//
+		//	fn1({errcode:0,message:'success'})
+		//	
+		//	方法名( json数据 )
+		//	
+		//	这里执行js代码就调用了本地的这个方法,方法的参数就是响应的数据
+		//	这里就变相的实现了跨域的请求
+		//	
+
+		var btn = document.querySelector('#btn')
+		console.log(btn)
+		btn.onclick = function(){
+			var script = document.createElement('script')
+			script.src='http://localhost:5000/jsonpReq?callback=abc'
+			document.body.appendChild(script)
+		}
+
+		function abc(data){
+			// console.log(typeof data)
+			// var obj = JSON.stringify(data)
+			console.log(data)
+		}
+	</script>
+</body>
+</html>
