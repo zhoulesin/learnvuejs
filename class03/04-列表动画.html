@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li {
+			border :1px dashed pink;
+			margin: 5px;
+			line-height: 30px;
+			height: 30px;
+			font-size: 14px;
+			list-style: none;
+			padding-left: 10px;
+			width: 100%;
+		}
+
+		li:hover{
+			background-color: red;
+			transition:all 1s ease;
+		}
+
+
+		.v-enter,
+		.v-leave-to {
+			opacity: 0;
+			transform: translateY(80px);
+		}
+
+		.v-enter-active,
+		.v-leave-active {
+			transition: all 1s linear;
+		}
+
+		.v-move{
+			transition: all 1s linear;
+		}
+
+		.v-leave-active {
+			position: absolute;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="app">
+
+		<div>
+			<label for="">
+				Id:
+				<input type="text" v-model='id'>
+			</label>
+			<label for="">
+				Name:
+				<input type="text" v-model='name'>
+			</label>
+			<input type="button" value="添加" @click='add'>
+		</div>
+
+		
+		<!-- <ul> -->
+			<transition-group appear tag='ul'>
+				<li v-for='(item,i) in list' :key='item.id' @click='del(i)'>
+					{{ item.id }} ---------- {{ item.name }}
+				</li>
+			</transition-group>
+		<!-- </ul> -->
+		
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				id:'',
+				name:'',
+				list:[
+					{id:1,name:'zz'},
+					{id:2,name:'zz2'},
+					{id:3,name:'zz32'},
+					{id:4,name:'zz3'}
+				]
+			},
+			methods:{
+				add(){
+					this.list.push({id:this.id,name:this.name})
+					this.id = this.name = ''
+				},
+				del(i){
+					this.list.splice(i,1)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

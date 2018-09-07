@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.v-enter,
+		.v-leave-to{
+			opacity: 0;
+			transform: translateX(150px);
+		}
+
+		.v-enter-active,
+		.v-leave-active {
+			transition:all 0.5s ease;
+			/*position: absolute;*/
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app">
+		<div>
+			<a href="#" @click.prevent='comId="login"'>登录</a>
+			<a href="#" @click.prevent='comId="register"'>注册</a>
+		</div>
+		<transition mode='out-in'>
+			<component :is='comId'></component>
+		</transition>
+		
+	</div>
+
+
+	<template id='login'>
+		<div>login component</div>
+	</template>
+
+	<template id='register'>
+		<div>register component</div>
+	</template>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		
+		Vue.component('login',{
+			template:'#login'
+		})
+
+		Vue.component('register',{
+			template:'#register'
+		})
+
+
+
+		new Vue({
+			el:'#app',
+			data:{
+				flag:'true',
+				comId:'login'
+			},
+			methods:{}
+		})
+	</script>
+</body>
+</html>

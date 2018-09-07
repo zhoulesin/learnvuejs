@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.v-enter,
+		.v-leave-to{
+			opacity: 0;
+			transform:translateX(200px);
+		}
+
+		.v-enter-active,
+		.v-leave-active{
+			transition: all 1s linear;
+		}
+
+		.z-enter,
+		.z-leave-to{
+			opacity: 0;
+			transform:translateY(200px);
+		}
+
+		.z-enter-active,
+		.z-leave-active{
+			transition: all 1s linear;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app">
+		<button @click='flag = ! flag'>点击隐藏</button>
+
+		<transition>
+			<h3 v-show='flag' >这是一个h3</h3>
+		</transition>
+
+		<hr>
+
+		<button @click='flag2 = ! flag2'>点击隐藏2</button>
+
+		<transition name='z'>
+			<!-- 这里使用的动画就是以z开头的 -->
+			<h5 v-show='flag2' >这是一个h5</h5>
+		</transition>
+		
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				flag : true,
+				flag2 : true
+			},
+			methods:{}
+		})
+	</script>
+</body>
+</html>

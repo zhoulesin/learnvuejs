@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		<my-com1></my-com1>
+		<com2></com2>
+		<com3></com3>
+		<!-- <login></login> -->
+	</div>
+
+	<div id="app2">
+		<my-com1></my-com1>
+		<com2></com2>
+		<com3></com3>
+		<login></login>
+	</div>
+	
+
+	<template id="temp3">
+		<div>
+			<span>组件3</span>
+		</div>
+	</template>
+
+
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+
+		// 第一种方式
+		var com1 = Vue.extend({	
+			template:'<h1>组件1</h1>'
+		})
+
+		Vue.component('myCom1',com1);
+
+
+
+
+		// 第二种方式
+		Vue.component('com2',{
+			template:'<p>组件2</p>'
+		})
+
+		//只能有一个root element
+
+
+		//第三种方式
+		Vue.component('com3',{
+			template:'#temp3'
+		})
+
+
+
+		new Vue({
+			el:'#app',
+			data:{},
+			methods:{}
+		})
+
+		new Vue({
+			el:'#app2',
+			data:{},
+			methods:{},
+			components:{
+				login:{
+					template:'<h1>login 私有的<h1>'
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/zhoulesin/learnvuejs#readme",
   "dependencies": {
+    "animate": "^1.0.0",
+    "animate.css": "^3.7.0",
     "bootstrap": "^3.3.7",
     "express": "^4.16.3",
     "vue": "^2.5.17",

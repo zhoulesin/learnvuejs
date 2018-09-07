@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		<div @click='handle'>123</div>
+		<temp></temp>
+	</div>
+
+	<template id="temp">
+		<div>
+			<p>组件</p>
+			<span>{{ msg }}</span>
+			<input type="button" value="+1" @click='add'>
+			<h3>{{ count }}</h3>
+		</div>
+	</template>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+
+		Vue.component('temp',{
+			template:'#temp',
+			data (){
+				return {
+					msg:'hehehe',
+					count:0
+				}
+			},
+			methods:{
+				add(){
+					console.log(this)
+					this.count++
+				}
+			}
+		})
+
+		new Vue({
+			el:'#app',
+			data:{
+				msg:'hahaha'
+			},
+			methods:{
+				handle(){
+					console.log(this)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.ball{
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="app">
+		<input type="button" value="aaa" @click='flag = !flag'>
+		<transition
+			@before-enter='beforeEnter'
+			@enter='enter'
+			@after-enter='afterEnter'
+			>
+			<div class="ball" v-show='flag'></div>
+		</transition>
+	</div>
+	
+	<script src="../node_modules/vue/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				flag:false
+			},
+			methods:{
+				beforeEnter(el){
+					el.style.transform = 'translate(0,0)'
+				},
+				enter(el,done){
+					el.offsetWidth
+					el.style.transform = 'translate(150px,300px)'
+					el.style.transition = 'all 1s linear'
+
+					done()
+				},
+				afterEnter(el){
+					this.flag = false
+				}
+			}
+		})
+	</script>
+</body>
+</html>
