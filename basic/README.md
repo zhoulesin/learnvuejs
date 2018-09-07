@@ -86,3 +86,11 @@ v-for='(val,key,idx) in object'
 
 ## v-bind
 
+## v-model
+
+## v-pre
+
+## v-cloak
+
+## v-once
+
